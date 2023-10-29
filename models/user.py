@@ -29,9 +29,9 @@ class User(BaseModel, Base):
         """initializes user"""
         if kwargs:
             path = kwargs.pop("password", None)
-            if pwd:
+            if path:
                 obj = hashlib.md5()
-                obj.update(pwd.encode('utf-8'))
+                obj.update(path.encode('utf-8'))
                 obj_pass = obj.hexdigest()
                 kwargs['password'] = obj_pass
         super().__init__(*args, **kwargs)
