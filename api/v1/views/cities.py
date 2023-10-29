@@ -148,4 +148,3 @@ def bad_request(error):
     '''
     # Return a JSON response for 400 error
     return jsonify({'error': 'Bad Request'}), 400
-
