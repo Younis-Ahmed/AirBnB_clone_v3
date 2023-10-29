@@ -71,16 +71,24 @@ class FileStorage:
 
     def get(self, cls, id):
         """A method to retrieve one object"""
-        object = self.__session.query(classes[cls])
-        for obj in object:
-            if obj.id == id:
-                return obj
+        if clas not in classes.values():
             return None
+        all_cls = models.storage.all(cls)
+        for val in all_cls.values():
+            if (val.id == id):
+                return value
+
+        return None
 
     def count(self, cls=None):
         """Returns the number of objects in storage matching"""
-        objct = 0
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                objct += len(self.__session.query(classes[clss]).all())
-        return objct
+        all_cls = classes.values()
+
+        if not cls:
+            count = 0
+            for clss in all_cls:
+                count += len(models.storage.all(clss).values())
+        else:
+            count = len(models.storage.all(cls).values())
+
+        return count
